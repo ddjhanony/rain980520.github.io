@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>匿名大墩</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background-color: #111827;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .app {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding-top: 6rem;
+            background: #111827; /* 深色主題 */
+        }
+
+        .welcome-text {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 2rem;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .welcome-text.show {
+            opacity: 1;
+        }
+
+        .button-wrapper {
+            width: 80%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            background-color: #1f2937;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 8px;
+            border: none;
+            width: 300px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .button:hover {
+            background-color: #4CAF50;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .button.active {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <!-- 標題已刪除 -->
+    </div>
+    <div id="app" class="app">
+        <h1 id="welcomeText" class="welcome-text">歡迎使用匿名大墩</h1>
+        <div class="button-wrapper">
+            <button class="button" onclick="window.location.href='https://sites.google.com/view/ddjh-anony'">
+                官網
+            </button>
+        </div>
+        <div class="button-wrapper">
+            <button class="button" onclick="window.location.href='https://ddjh-anony.forteens.cc'">
+                投稿連結
+            </button>
+        </div>
+        <div class="button-wrapper">
+            <button class="button" onclick="window.location.href='https://forms.gle/m9yV8VSwDXP3buJf7'">
+                版務員徵選表單
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const welcomeText = document.getElementById('welcomeText');
+        const buttons = document.querySelectorAll('.button');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                buttons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        setTimeout(() => {
+            welcomeText.classList.add('show');
+        }, 500);
+    </script>
+</body>
+</html>
